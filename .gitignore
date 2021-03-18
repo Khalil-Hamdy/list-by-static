@@ -1,32 +1,73 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+#include <iostream>
+#include<string>
+#define capacity 20
+using namespace std;
+template<typename T>
+class list{
+private:
+    int size;
+    T arr[capacity];
+public:
+    list(){
+        size=0;
+    }
+void push_back(T element){
+    if(size<capacity)
+        arr[size++]=element;
+    }
+void pop_back(){
+    if(size>0)size--;
+    else{
+        cout<<"list is empty"<<endl;
+    }
+    }
+void set(int index,T element){
+    if(index>=0 && index<=size){
+        for(int i=size-1;i>=index;i--){
+            arr[i]=arr[i+1];
+        }
+        arr[index]=element;
+        size++;
+    }
+    }
+void remove(int index){
+    if(index>=0 && index<size){
+            size--;
+        for(int i=index;i<size;i++){
+            arr[i]=arr[i+1];
+        }
+    }
+    else {
+        cout<<"this invalided index! "<<endl;
+    }
+}
+int get(int index){
+    if(index>=0 && index<size){
+        return arr[index];
+    }
+    else {
+        cout<<"this invalided index! "<<endl;
+        return -1;
+    }
+}
+void reverse(){
+    for(int i=0;i<size/2;i++){
+        swap(arr[0],arr[size-i-1]);
+    }
+}
+void print(){
+    for(int i=0;i<size;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+};
+int main(){
+list<int> l;
+l.push_back(2);
+l.push_back(3);
+l.push_back(4);
+l.reverse();
+l.print();
+return 0;
+}
