@@ -61,13 +61,18 @@ void print(){
     }
     cout<<endl;
 }
+int get_size(){
+    return size;
+}
 };
 int main(){
 list<int> l;
 l.push_back(2);
 l.push_back(3);
 l.push_back(4);
+cout<<l.get_size()<<endl;
 l.reverse();
 l.print();
 return 0;
 }
+
